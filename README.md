@@ -34,6 +34,7 @@ Here are test results comparing fast-max to two other popular libraries undersco
 Tests have been conducted by creating an array of ten million random numbers from zero to the maximum
 theoretical value of the typed array.
 | array type | library | average duration in milliseconds |
+| ---------- | ------- | -------------------------------- |
 | Int8Array | fast-max | 0.1 | 
 | Int8Array | lodash | 21.1 | 
 | Int8Array | underscore | 13.1 | 
