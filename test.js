@@ -9,7 +9,9 @@ test("gettings maximum from a normal array", (t) => {
 });
 
 test("getting maximum from an array of image band values", (t) => {
-  const numbers = Uint8Array.from(JSON.parse(fs.readFileSync("uint8-numbers.json", "utf-8")));
+  const numbers = Uint8Array.from(
+    JSON.parse(fs.readFileSync("uint8-numbers.json", "utf-8"))
+  );
   console.log("loaded uint8 numbers of length:", numbers.length);
   const result = max(numbers, { debug: true });
   t.is(result, 255);
@@ -17,14 +19,17 @@ test("getting maximum from an array of image band values", (t) => {
 
 test("getting maximum from typed arrays", (t) => {
   [
-    [Int8Array, 127], 
-    [Uint8Array, 255], 
-    [Int16Array, 32767], 
-    [Uint16Array, 65535]
+    [Int8Array, 127],
+    [Uint8Array, 255],
+    [Int16Array, 32767],
+    [Uint16Array, 65535],
   ].forEach(([array_type, expected_max]) => {
-    const filename = array_type.name.replace("Array", "").toLowerCase() + "-numbers.json";
-    const numbers = array_type.from(JSON.parse(fs.readFileSync(filename, "utf-8")));
+    const filename =
+      array_type.name.replace("Array", "").toLowerCase() + "-numbers.json";
+    const numbers = array_type.from(
+      JSON.parse(fs.readFileSync(filename, "utf-8"))
+    );
     const result = max(numbers, { debug: true });
-    t.is(result, expected_max);  
+    t.is(result, expected_max);
   });
 });

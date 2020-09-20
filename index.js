@@ -23,10 +23,15 @@ module.exports = function fastMax(
     console.log("[fast-max] starting with numbers:", numbers.slice(0, 10));
 
   if (!numbers.length) {
-    if (debug) console.error("[fast-max] Instead of an array of numbers, you passed in", numbers);
+    if (debug)
+      console.error(
+        "[fast-max] Instead of an array of numbers, you passed in",
+        numbers
+      );
     throw new Error("[fast-max] You didn't pass in an array of numbers");
   }
-  if (numbers.length === 0) throw new Error("[fast-max] You passed in an empty array");
+  if (numbers.length === 0)
+    throw new Error("[fast-max] You passed in an empty array");
 
   let max = numbers[0];
   const length = numbers.length;
@@ -41,7 +46,15 @@ module.exports = function fastMax(
       if (value > max) {
         max = value;
         if (value === theoretical_max) {
-          if (debug) console.log("[fast-max] found maximum value of " + value + " at index " + i + " of " + length);
+          if (debug)
+            console.log(
+              "[fast-max] found maximum value of " +
+                value +
+                " at index " +
+                i +
+                " of " +
+                length
+            );
           break;
         }
       }
