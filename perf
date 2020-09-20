@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+for array_type in Int8 Uint8 Int16 Uint16 Int32 Uint32 BigInt64 BigUint64
+do
+    for maxlib in fast-max lodash underscore
+    do
+        sleep 2;
+        node perf.js $array_type $maxlib;
+        sleep 2;
+    done
+done

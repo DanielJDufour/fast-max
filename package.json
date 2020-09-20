@@ -1,0 +1,42 @@
+{
+  "name": "fast-max",
+  "version": "0.0.0",
+  "description": "Quickest Way to get the Maximum Value of an Array of Numbers (Typed or Untyped)",
+  "main": "index.js",
+  "scripts": {
+    "format": "npx prettier --write *.js",
+    "setup": "node setup.js",
+    "perf": "./perf",
+    "test": "ava --timeout=1m --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielJDufour/fast-max.git"
+  },
+  "keywords": [
+    "array",
+    "fast",
+    "max",
+    "maximum",
+    "numbers",
+    "nums",
+    "quick",
+    "speed",
+    "typed",
+    "uint8array",
+    "int8array",
+    "uint16array",
+    "int16array"
+  ],
+  "author": "Daniel J. Dufour",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/DanielJDufour/fast-max/issues"
+  },
+  "homepage": "https://github.com/DanielJDufour/fast-max#readme",
+  "devDependencies": {
+    "ava": "^3.12.1",
+    "lodash.max": "^4.0.1",
+    "underscore": "^1.11.0"
+  }
+}
