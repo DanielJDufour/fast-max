@@ -21,9 +21,7 @@ const ARRAY_CONSTRUCTORS = {
 };
 
 const numbers = ARRAY_CONSTRUCTORS[array_type].from(
-  JSON.parse(
-    fs.readFileSync(array_type.toLowerCase() + "-numbers.json", "utf-8")
-  )
+  JSON.parse(fs.readFileSync(array_type.toLowerCase() + "-numbers.json", "utf-8"))
 );
 
 const times = [];
@@ -37,6 +35,4 @@ for (let i = 0; i < 10; i++) {
   times.push(duration);
 }
 const avg = times.reduce((total, n) => total + n, 0) / 10;
-console.log(
-  `| ${array_type}Array | ${max_lib} | ${avg === 0 ? "< 1" : avg} | `
-);
+console.log(`| ${array_type}Array | ${max_lib} | ${avg === 0 ? "< 1" : avg} | `);

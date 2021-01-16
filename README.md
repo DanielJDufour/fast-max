@@ -29,6 +29,17 @@ const result = max(pixel_values);
 // result is 255
 ```
 
+# setting theoretical maximum
+If you know that an array's values can't exceed a specific number,
+you can set the theoretical_max.
+```javascript
+const max = require("fast-max");
+
+const numbers = [0, 9, 4, 2, 10, ...]);
+const result = max(numbers, { theoretical_max: 10 });
+// result is 10
+```
+
 # performance tests
 Here are test results comparing fast-max to two other popular libraries underscore and lodash.
 Tests have been conducted by creating an array of ten million random numbers from zero to the maximum

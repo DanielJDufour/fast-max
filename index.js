@@ -17,44 +17,34 @@ const THEORETICAL_MAXIMUMS = {
 
 module.exports = function fastMax(
   numbers,
-  { debug = false } = { debug: false }
+  { debug = false, theoretical_max = undefined } = {
+    debug: false,
+    theoretical_max: undefined,
+  }
 ) {
-  if (debug)
-    console.log("[fast-max] starting with numbers:", numbers.slice(0, 10));
+  if (debug) console.log("[fast-max] starting with numbers:", numbers.slice(0, 10));
 
   if (!numbers.length) {
-    if (debug)
-      console.error(
-        "[fast-max] Instead of an array of numbers, you passed in",
-        numbers
-      );
+    if (debug) console.error("[fast-max] Instead of an array of numbers, you passed in", numbers);
     throw new Error("[fast-max] You didn't pass in an array of numbers");
   }
-  if (numbers.length === 0)
-    throw new Error("[fast-max] You passed in an empty array");
+  if (numbers.length === 0) throw new Error("[fast-max] You passed in an empty array");
 
   let max = numbers[0];
   const length = numbers.length;
 
   if (debug) console.log("[fast-max] constructor:", numbers.constructor.name);
 
-  let theoretical_max = THEORETICAL_MAXIMUMS[numbers.constructor.name];
+  if (theoretical_max === undefined) theoretical_max = THEORETICAL_MAXIMUMS[numbers.constructor.name];
+
   if (debug) console.log("[fast-max] theoretical maximunm is", theoretical_max);
   if (theoretical_max) {
     for (let i = 1; i < length; i++) {
       const value = numbers[i];
       if (value > max) {
         max = value;
-        if (value === theoretical_max) {
-          if (debug)
-            console.log(
-              "[fast-max] found maximum value of " +
-                value +
-                " at index " +
-                i +
-                " of " +
-                length
-            );
+        if (value >= theoretical_max) {
+          if (debug) console.log("[fast-max] found maximum value of " + value + " at index " + i + " of " + length);
           break;
         }
       }

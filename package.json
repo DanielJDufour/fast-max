@@ -4,7 +4,7 @@
   "description": "Quickest Way to get the Maximum Value of an Array of Numbers (Typed or Untyped)",
   "main": "index.js",
   "scripts": {
-    "format": "npx prettier --write *.js",
+    "format": "npx prettier --arrow-parens=avoid --print-width=120 --write *.js",
     "setup": "node setup.js",
     "perf": "./perf",
     "test": "ava --timeout=1m --verbose"
@@ -38,5 +38,6 @@
     "ava": "^3.12.1",
     "lodash.max": "^4.0.1",
     "underscore": "^1.11.0"
-  }
+  },
+  "dependencies": {}
 }
