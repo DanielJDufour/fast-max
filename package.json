@@ -1,6 +1,6 @@
 {
   "name": "fast-max",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Quickest Way to get the Maximum Value of an Array of Numbers (Typed or Untyped)",
   "main": "index.js",
   "scripts": {
