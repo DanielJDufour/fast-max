@@ -38,5 +38,8 @@
     "flug": "^1.1.0",
     "lodash.max": "^4.0.1",
     "underscore": "^1.13.1"
+  },
+  "dependencies": {
+    "typed-array-ranges": "^0.0.0"
   }
 }
