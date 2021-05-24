@@ -17,8 +17,9 @@ const THEORETICAL_MAXIMUMS = {
 
 module.exports = function fastMax(
   numbers,
-  { debug = false, theoretical_max = undefined } = {
+  { debug = false, no_data = undefined, theoretical_max = undefined } = {
     debug: false,
+    no_data: undefined,
     theoretical_max: undefined,
   }
 ) {
@@ -30,7 +31,7 @@ module.exports = function fastMax(
   }
   if (numbers.length === 0) throw new Error("[fast-max] You passed in an empty array");
 
-  let max = numbers[0];
+  let max;
   const length = numbers.length;
 
   if (debug) console.log("[fast-max] constructor:", numbers.constructor.name);
@@ -39,21 +40,49 @@ module.exports = function fastMax(
 
   if (debug) console.log("[fast-max] theoretical maximunm is", theoretical_max);
   if (theoretical_max) {
-    for (let i = 1; i < length; i++) {
-      const value = numbers[i];
-      if (value > max) {
-        max = value;
-        if (value >= theoretical_max) {
-          if (debug) console.log("[fast-max] found maximum value of " + value + " at index " + i + " of " + length);
-          break;
+    if (no_data !== undefined) {
+      max = -Infinity;
+      for (let i = 1; i < length; i++) {
+        const value = numbers[i];
+        if (value > max && value !== no_data) {
+          max = value;
+          if (value >= theoretical_max) {
+            if (debug) console.log("[fast-max] found maximum value of " + value + " at index " + i + " of " + length);
+            break;
+          }
+        }
+      }
+      if (max === -Infinity) max = undefined;
+    } else {
+      max = numbers[0];
+      for (let i = 1; i < length; i++) {
+        const value = numbers[i];
+        if (value > max) {
+          max = value;
+          if (value >= theoretical_max) {
+            if (debug) console.log("[fast-max] found maximum value of " + value + " at index " + i + " of " + length);
+            break;
+          }
         }
       }
     }
   } else {
-    for (let i = 1; i < length; i++) {
-      const value = numbers[i];
-      if (value > max) {
-        max = value;
+    if (no_data !== undefined) {
+      max = -Infinity;
+      for (let i = 0; i < length; i++) {
+        const value = numbers[i];
+        if (value > max && value !== no_data) {
+          max = value;
+        }
+      }
+      if (max === -Infinity) max = undefined;
+    } else {
+      max = numbers[0];
+      for (let i = 1; i < length; i++) {
+        const value = numbers[i];
+        if (value > max) {
+          max = value;
+        }
       }
     }
   }

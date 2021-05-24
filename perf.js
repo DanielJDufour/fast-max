@@ -35,4 +35,8 @@ for (let i = 0; i < 10; i++) {
   times.push(duration);
 }
 const avg = times.reduce((total, n) => total + n, 0) / 10;
-console.log(`| ${array_type}Array | ${max_lib} | ${avg === 0 ? "< 1" : avg} | `);
+console.log(
+  `| ${array_type}Array | ${max_lib} | ${max_lib === "fast-max" ? "**" : ""}${avg === 0 ? "< 1" : avg}${
+    max_lib === "fast-max" ? "**" : ""
+  } | `
+);
