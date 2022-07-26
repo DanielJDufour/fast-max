@@ -14,18 +14,18 @@ so if we encounter a 255 in the array, we can stop searching for a higher value.
 # usage
 # getting maximum value of a normal array
 ```javascript
-const max = require("fast-max");
+const fastMax = require("fast-max"); // or import max from "fast-max";
 
-const result = max([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+const result = fastMax([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 // result is 10
 ```
 
 # getting maximum value of a typed array
 ```javascript
-const max = require("fast-max");
+const fastMax = require("fast-max");
 
 const pixel_values = Uint8Array.from([0, 128, 255, 34, ...]);
-const result = max(pixel_values);
+const result = fastMax(pixel_values);
 // result is 255
 ```
 
@@ -33,20 +33,20 @@ const result = max(pixel_values);
 If you know that an array's values can't exceed a specific number,
 you can set the theoretical_max.
 ```javascript
-const max = require("fast-max");
+const fastMax = require("fast-max");
 
 const numbers = [0, 9, 4, 2, 10, ...]);
-const result = max(numbers, { theoretical_max: 10 });
+const result = fastMax(numbers, { theoretical_max: 10 });
 // result is 10
 ```
 
 # no data value
 If you want to ignore a specific value, you can set the no_data value.
 ```javascript
-const max = require("fast-max");
+const fastMax = require("fast-max");
 
 const numbers = [99, 0, 7, 99, 5, ...]);
-const result = max(numbers, { no_data: 99 });
+const result = fastMax(numbers, { no_data: 99 });
 // result is 7
 ```
 

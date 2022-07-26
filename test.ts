@@ -1,6 +1,6 @@
-const fs = require("fs");
-const test = require("flug");
-const max = require("./index");
+import { readFileSync } from "fs";
+import test from "flug";
+import max from "./index";
 
 test("gettings maximum from a normal array", ({ eq }) => {
   const numbers = [920, 550, 340, 690, 550, 340, 840, 700, 550, 210, 540];
@@ -9,14 +9,14 @@ test("gettings maximum from a normal array", ({ eq }) => {
 });
 
 test("getting maximum from an array of image band values", ({ eq }) => {
-  const numbers = Uint8Array.from(JSON.parse(fs.readFileSync("uint8-numbers.json", "utf-8")));
+  const numbers = Uint8Array.from(JSON.parse(readFileSync("uint8-numbers.json", "utf-8")));
   console.log("loaded uint8 numbers of length:", numbers.length);
   const result = max(numbers, { debug: false });
   eq(result, 255);
 });
 
 test("setting theoretical maximum", ({ eq }) => {
-  const numbers = Array.from(Uint8Array.from(JSON.parse(fs.readFileSync("uint8-numbers.json", "utf-8"))));
+  const numbers = Array.from(Uint8Array.from(JSON.parse(readFileSync("uint8-numbers.json", "utf-8"))));
   console.log("loaded uint8 numbers of length:", numbers.length);
   const result = max(numbers, { debug: false, theoretical_max: 255 });
   eq(result, 255);
@@ -24,20 +24,20 @@ test("setting theoretical maximum", ({ eq }) => {
 
 test("getting maximum from typed arrays", ({ eq }) => {
   [
-    [Int8Array, 127],
-    [Uint8Array, 255],
-    [Int16Array, 32767],
-    [Uint16Array, 65535],
+    [Int8Array, 127] as const,
+    [Uint8Array, 255] as const,
+    [Int16Array, 32767] as const,
+    [Uint16Array, 65535] as const,
   ].forEach(([array_type, expected_max]) => {
     const filename = array_type.name.replace("Array", "").toLowerCase() + "-numbers.json";
-    const numbers = array_type.from(JSON.parse(fs.readFileSync(filename, "utf-8")));
+    const numbers = array_type.from(JSON.parse(readFileSync(filename, "utf-8")));
     const result = max(numbers, { debug: false });
     eq(result, expected_max);
   });
 });
 
 test("getting maximum from a very large untyped array", ({ eq }) => {
-  const numbers = JSON.parse(fs.readFileSync("uint16-numbers.json", "utf-8")).map(n => Number(n));
+  const numbers = JSON.parse(readFileSync("uint16-numbers.json", "utf-8")).map(n => Number(n));
   const result = max(numbers, { debug: true });
   eq(result, 65535);
 });

@@ -1,6 +1,6 @@
 const getTheoreticalMax = require("typed-array-ranges/get-max");
 
-module.exports = function fastMax(
+function fastMax(
   numbers,
   { debug = false, no_data = undefined, theoretical_max = undefined } = {
     debug: false,
@@ -74,4 +74,23 @@ module.exports = function fastMax(
 
   if (debug) console.log("[fast-max] returning", max);
   return max;
-};
+}
+
+if (typeof define === "function" && define.amd) {
+  define(function () {
+    return fastMax;
+  });
+}
+
+if (typeof module === "object") {
+  module.exports = fastMax;
+  module.exports.default = fastMax;
+}
+
+if (typeof self === "object") {
+  self.fastMax = fastMax;
+}
+
+if (typeof window === "object") {
+  window.fastMax = fastMax;
+}
