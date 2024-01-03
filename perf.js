@@ -6,7 +6,7 @@ const [_node, _perfjs, array_type, max_lib] = process.argv;
 const MAX_FUNCS = {
   lodash: require("lodash.max"),
   underscore: require("underscore").max,
-  "fast-max": require("./index"),
+  "fast-max": require("./index")
 };
 
 const ARRAY_CONSTRUCTORS = {
@@ -17,7 +17,7 @@ const ARRAY_CONSTRUCTORS = {
   Int32: Int32Array,
   Uint32: Uint32Array,
   BigInt64: BigInt64Array,
-  BigUint64: BigUint64Array,
+  BigUint64: BigUint64Array
 };
 
 const numbers = ARRAY_CONSTRUCTORS[array_type].from(

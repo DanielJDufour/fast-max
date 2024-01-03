@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "f": "npm run format",
-    "format": "npx prettier --arrow-parens=avoid --print-width=120 --write *.js *.ts",
+    "format": "npx prettier --arrow-parens=avoid --print-width=120 --trailing-comma=none --write *.js *.ts",
     "setup": "node setup.js",
     "perf": "./perf",
     "test": "npm run test:js && npm run test:ts",
@@ -43,9 +43,9 @@
   },
   "homepage": "https://github.com/DanielJDufour/fast-max#readme",
   "devDependencies": {
-    "flug": "^2.3.1",
+    "flug": "^2.7.1",
     "lodash.max": "^4.0.1",
-    "underscore": "^1.13.4"
+    "underscore": "^1.13.6"
   },
   "dependencies": {
     "typed-array-ranges": "^0.0.0"

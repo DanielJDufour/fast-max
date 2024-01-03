@@ -41,13 +41,16 @@ const result = fastMax(numbers, { theoretical_max: 10 });
 ```
 
 # no data value
-If you want to ignore a specific value, you can set the no_data value.
+If you want to ignore one or more specific values, you can set the no_data value.
 ```javascript
 const fastMax = require("fast-max");
 
-const numbers = [99, 0, 7, 99, 5, ...]);
+const numbers = [99, 0, 7, 99, 5, ...];
 const result = fastMax(numbers, { no_data: 99 });
 // result is 7
+
+const result = fastMax(numbers, { no_data: [7, 99] });
+// result is still 5
 ```
 
 # performance tests
@@ -56,27 +59,27 @@ Tests have been conducted by creating an array of ten million random numbers fro
 theoretical value of the typed array.
 | array type | library | average duration in milliseconds |
 | ---------- | ------- | -------------------------------- |
-| Int8Array | fast-max | **< 1** | 
-| Int8Array | lodash | 20.5 | 
-| Int8Array | underscore | 12.4 | 
+| Int8Array | fast-max | **0.1** | 
+| Int8Array | lodash | 21.1 | 
+| Int8Array | underscore | 9.4 | 
 | Uint8Array | fast-max | **0.1** | 
-| Uint8Array | lodash | 24.9 | 
-| Uint8Array | underscore | 12.5 | 
-| Int16Array | fast-max | **0.8** | 
-| Int16Array | lodash | 20.5 | 
-| Int16Array | underscore | 12.4 | 
-| Uint16Array | fast-max | **1.1** | 
-| Uint16Array | lodash | 21.9 | 
-| Uint16Array | underscore | 12.5 | 
-| Int32Array | fast-max | **13.2** | 
-| Int32Array | lodash | 20.6 | 
-| Int32Array | underscore | 12.4 | 
-| Uint32Array | fast-max | **13.5** | 
-| Uint32Array | lodash | 66.6 | 
-| Uint32Array | underscore | 14.3 | 
-| BigInt64Array | fast-max | **200.7** | 
-| BigInt64Array | lodash | 214.1 | 
-| BigInt64Array | underscore | 207.5 | 
-| BigUint64Array | fast-max | **199.2** | 
-| BigUint64Array | lodash | 212 | 
-| BigUint64Array | underscore | 202.9 | 
+| Uint8Array | lodash | 20.8 | 
+| Uint8Array | underscore | 9.4 | 
+| Int16Array | fast-max | **0.9** | 
+| Int16Array | lodash | 20.8 | 
+| Int16Array | underscore | 9.3 | 
+| Uint16Array | fast-max | **2.8** | 
+| Uint16Array | lodash | 20.8 | 
+| Uint16Array | underscore | 9.8 | 
+| Int32Array | fast-max | **51.5** | 
+| Int32Array | lodash | 21.6 | 
+| Int32Array | underscore | 9.6 | 
+| Uint32Array | fast-max | **114.3** | 
+| Uint32Array | lodash | 23.4 | 
+| Uint32Array | underscore | 13.3 | 
+| BigInt64Array | fast-max | **53.1** | 
+| BigInt64Array | lodash | 83.5 | 
+| BigInt64Array | underscore | 64.8 | 
+| BigUint64Array | fast-max | **50.9** | 
+| BigUint64Array | lodash | 110.1 | 
+| BigUint64Array | underscore | 98.5 | 

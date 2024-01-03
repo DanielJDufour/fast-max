@@ -27,7 +27,7 @@ test("getting maximum from typed arrays", ({ eq }) => {
     [Int8Array, 127] as const,
     [Uint8Array, 255] as const,
     [Int16Array, 32767] as const,
-    [Uint16Array, 65535] as const,
+    [Uint16Array, 65535] as const
   ].forEach(([array_type, expected_max]) => {
     const filename = array_type.name.replace("Array", "").toLowerCase() + "-numbers.json";
     const numbers = array_type.from(JSON.parse(readFileSync(filename, "utf-8")));
@@ -37,7 +37,7 @@ test("getting maximum from typed arrays", ({ eq }) => {
 });
 
 test("getting maximum from a very large untyped array", ({ eq }) => {
-  const numbers = JSON.parse(readFileSync("uint16-numbers.json", "utf-8")).map(n => Number(n));
+  const numbers = JSON.parse(readFileSync("uint16-numbers.json", "utf-8")).map((n: string) => Number(n));
   const result = max(numbers, { debug: true });
   eq(result, 65535);
 });
@@ -63,5 +63,11 @@ test("getting no maximum from typed arrays with all no data values", ({ eq }) =>
 test("getting maximum from typed arrays with some data values", ({ eq }) => {
   const numbers = Int8Array.from([1, 99, 2, 99, 4, 99, 6, 99, -10]);
   const result = max(numbers, { no_data: 99 });
+  eq(result, 6);
+});
+
+test("multiple no data and invalid values", ({ eq }) => {
+  const numbers = [1, null, 99, 2, 99, undefined, 4, 99, 6, 99, -10, NaN] as number[];
+  const result = max(numbers, { no_data: [-10, 99] });
   eq(result, 6);
 });

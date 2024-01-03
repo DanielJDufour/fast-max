@@ -17,7 +17,7 @@ const getRandomNums = (nbits, signed) => {
   { name: "int32", bits: 32, signed: true },
   { name: "uint32", bits: 32, signed: false },
   { name: "bigint64", bits: 64, signed: true },
-  { name: "biguint64", bits: 64, signed: false },
+  { name: "biguint64", bits: 64, signed: false }
 ].forEach(({ name, bits, signed }) => {
   const filename = name + "-numbers.json";
   fs.writeFileSync(filename, JSON.stringify(getRandomNums(bits, signed)), "utf-8");
