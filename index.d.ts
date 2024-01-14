@@ -16,7 +16,7 @@ export default function fastMax(
   numbers: ARRAY_TYPE,
   options?: {
     debug?: boolean | undefined;
-    no_data?: number[] | number | undefined;
+    no_data?: number[] | readonly number[] | number | undefined;
     theoretical_max?: number | undefined;
   }
 ): number;
