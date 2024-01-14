@@ -43,7 +43,7 @@
   },
   "homepage": "https://github.com/DanielJDufour/fast-max#readme",
   "devDependencies": {
-    "flug": "^2.7.1",
+    "flug": "^2.7.2",
     "lodash.max": "^4.0.1",
     "underscore": "^1.13.6"
   },

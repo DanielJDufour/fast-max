@@ -2,6 +2,11 @@ const fs = require("fs");
 const test = require("flug");
 const fastMax = require("./index");
 
+test("bug", ({ eq }) => {
+  eq(fastMax([255], { theoretical_max: 255 }), 255);
+  eq(fastMax([75], { theoretical_max: 255 }), 75);
+});
+
 test("gettings maximum from a normal array", ({ eq }) => {
   const numbers = [920, 550, 340, 690, 550, 340, 840, 700, 550, 210, 540];
   const result = fastMax(numbers, { debug: false });
